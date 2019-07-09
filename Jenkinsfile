@@ -1,12 +1,4 @@
-pipeline {
-  agent any
-  stages {
-
-    stage('init') {
-      steps {
-        echo 'strating'
-      }
-    }
+node{
 
     stage('Checkout') {
       git 'https://github.com/KonecKonca/scalaJenkinsTest.git'
@@ -16,5 +8,4 @@ pipeline {
       sh 'mvn package'
     }
 
-  }
 }
