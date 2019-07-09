@@ -1,14 +1,18 @@
 node{
 
+     // Get maven home path
+      def mvnHome = tool name: 'maven-3', type: 'maven'
+
     stage('Checkout') {
       git 'https://github.com/KonecKonca/scalaJenkinsTest.git'
     }
 
-    stage('Compile-Package') {
-      // Get maven home path
-      def mvnHome = tool name: 'maven-3', type: 'maven'
+    stage('Compile') {
+      sh "${mvnHome}/bin/mvn compile"
+    }
 
-      sh "${mvnHome}/bin/mvn clean"
+    stage('Test') {
+      sh "${mvnHome}/bin/mvn test"
     }
 
 }
