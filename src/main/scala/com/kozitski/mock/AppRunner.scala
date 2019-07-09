@@ -2,9 +2,6 @@ package com.kozitski.mock
 
 object AppRunner extends App {
 
-
-  /
-
   println("::: " + args(0) + "   " + args(1))
   printArgsToFile(args(0), args(1))
 
