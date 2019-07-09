@@ -1,18 +1,29 @@
-node{
+pipeline{
+    agent any
 
-     // Get maven home path
-      def mvnHome = tool name: 'maven-3', type: 'maven'
+    // Get maven home path
+    def mvnHome = tool name: 'maven-3', type: 'maven'
 
-    stage('Checkout') {
-      git 'https://github.com/KonecKonca/scalaJenkinsTest.git'
-    }
+    stages{
 
-    stage('Compile') {
-      sh "${mvnHome}/bin/mvn compile"
-    }
+        stage('Checkout') {
+          steps{
+            git 'https://github.com/KonecKonca/scalaJenkinsTest.git'
+          }
+        }
 
-    stage('Test') {
-      sh "${mvnHome}/bin/mvn test"
+        stage('Compile') {
+          steps{
+            sh "${mvnHome}/bin/mvn compile"
+          }
+        }
+
+        stage('Test') {
+          steps{
+            sh "${mvnHome}/bin/mvn test"
+          }
+        }
+
     }
 
 }
