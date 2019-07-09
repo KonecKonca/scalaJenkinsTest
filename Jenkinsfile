@@ -1,3 +1,5 @@
+def mvnHome = 'Undefined'
+
 pipeline{
     agent any
     stages{
@@ -9,7 +11,7 @@ pipeline{
         stage('Compile') {
           steps{
             script{
-                def mvnHome = tool name: 'maven-3', type: 'maven'
+              mvnHome = tool name: 'maven-3', type: 'maven'
             }
             sh "${mvnHome}/bin/mvn compile"
           }
