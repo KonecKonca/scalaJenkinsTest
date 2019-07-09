@@ -1,10 +1,10 @@
 pipeline{
     agent any
 
-    // Get maven home path
-    def mvnHome = tool name: 'maven-3', type: 'maven'
-
     stages{
+
+        // Get maven home path
+        def mvnHome = tool name: 'maven-3', type: 'maven'
 
         stage('Checkout') {
           steps{
